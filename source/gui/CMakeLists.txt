@@ -1,0 +1,1 @@
+target_sources(nullcore_loader PRIVATE StatusWindow.cpp)
