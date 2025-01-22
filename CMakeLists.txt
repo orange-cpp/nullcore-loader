@@ -1,14 +1,17 @@
 cmake_minimum_required(VERSION 3.26)
 include(cmake/vcpkg.cmake)
-
-vcpkg_install_if_not_found(glfw3 boost-asio boost-beast freetype)
+add_compile_definitions(WIN32_LEAN_AND_MEAN)
+vcpkg_install_if_not_found(glfw3 boost-asio boost-beast freetype boost-thread)
 set(CMAKE_CXX_STANDARD 26)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 project(nullcore_loader)
 add_executable(nullcore_loader source/main.cpp)
 
 find_package(glfw3 CONFIG REQUIRED)
-target_link_libraries(nullcore_loader PRIVATE glfw cv-sdk imgui opengl32)
-
-
+find_package(Freetype REQUIRED)
+find_package(boost_asio CONFIG REQUIRED)
+find_package(boost_thread REQUIRED CONFIG)
+target_link_libraries(nullcore_loader PRIVATE glfw cv-sdk imgui opengl32 Boost::asio Boost::thread stb xorstr tray)
+target_include_directories(nullcore_loader PRIVATE source)
 add_subdirectory(extlibs)
 add_subdirectory(source)

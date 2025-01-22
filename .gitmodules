@@ -4,3 +4,12 @@
 [submodule "extlibs/imgui"]
 	path = extlibs/imgui
 	url = https://github.com/ocornut/imgui.git
+[submodule "extlibs/stb"]
+	path = extlibs/stb
+	url = https://github.com/nothings/stb.git
+[submodule "extlibs/xorstr"]
+	path = extlibs/xorstr
+	url = https://github.com/JustasMasiulis/xorstr.git
+[submodule "extlibs/traypp"]
+	path = extlibs/traypp
+	url = https://github.com/Soundux/traypp.git
